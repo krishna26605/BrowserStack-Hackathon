@@ -1,0 +1,2182 @@
+Test Case ID,Title,Folder ID,Folder Path,State,Owner,Priority,Type of Test Case,Automation Status,Description,Preconditions,Template,Steps,Expected Result,Issues,Tags,Attachments,Created At,Created By,Last Updated At,Last Updated By,Project Name,Test Case URL
+TC-2399,Username Format Validation for Email Address Structure,39691774,New Folder,Active,Krishna Nikam,High,Security,Not Automated,"Validates that the login form correctly accepts properly formatted email
+addresses as usernames and rejects malformed email formats. This test
+ensures that email validation rules are properly enforced to prevent
+invalid email submissions while allowing legitimate email-based logins.
+
+","1.  Browser environment standardized: Supported browser (Chrome,
+    Firefox, Safari, Edge) with desktop resolution 1920x1080 at 100%
+    zoom
+2.  Stable and active internet connection available
+3.  No interfering browser extensions or JavaScript errors
+4.  Login page is accessible and loaded successfully
+5.  Email validation rules are configured and active in the system
+6.  System has predefined email format requirements (e.g., must contain
+    @ symbol, valid domain structure)
+
+",Steps,"Navigate to the login page and observe the username input field
+
+","Login page loads successfully with username and password input fields
+visible and ready for input
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:35:56,Krishna Nikam,02/22/2026 06:35:56,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548952
+,,,,,,,,,,,,"Enter a properly formatted email address (e.g., 'user@example.com') in
+the username field
+
+","Email address is accepted in the username field without validation
+errors
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter a valid password in the password field and click the login button
+
+","Form proceeds to credential validation without rejecting the email
+format
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter a malformed email address (e.g., 'userexample.com' - missing @
+symbol) in the username field
+
+","Email validation error is displayed indicating invalid email format
+requirement
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter another malformed email format (e.g., 'user@.com' - missing domain
+name) and attempt to proceed
+
+","Form rejects the input with appropriate email format validation error
+message
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter a malformed email with invalid domain structure (e.g.,
+'user@example' - missing TLD) in the username field
+
+","System displays email format validation error preventing form submission
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter a valid email format that matches system requirements (e.g.,
+'testuser@domain.com') and verify acceptance
+
+","Email is accepted by the form and passes validation checks, allowing
+progression to next step
+
+",,,,,,,,,
+TC-2393,Successful Authentication with Valid Username and Password,39691774,New Folder,Active,Krishna Nikam,Critical,Security,Not Automated,"Validates that users can successfully authenticate using correct
+username and password credentials, resulting in session creation and
+redirection to the authenticated dashboard. This test ensures the core
+authentication flow works correctly with valid credentials and
+establishes proper user session state.
+
+","1.  Browser is open and at supported version (Chrome, Firefox, Safari,
+    or Edge)
+2.  Screen resolution is set to 1920x1080 or higher
+3.  Browser zoom level is set to 100%
+4.  Stable and active internet connection is available
+5.  No browser extensions or JavaScript errors are interfering with the
+    application
+6.  Application login page is accessible and fully loaded
+7.  User account with valid credentials exists in the system database
+    (example: username='testuser' and corresponding password is set)
+8.  User is not already authenticated/logged in (no active session
+    exists)
+9.  Browser cookies and localStorage are enabled and functional
+10. Application is not in maintenance mode or experiencing technical
+    issues
+
+",Steps,"Navigate to the application login page URL
+
+","Login page is displayed successfully with login form containing
+username/email field, password field, and login button
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:35:56,Krishna Nikam,02/22/2026 06:35:56,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548946
+,,,,,,,,,,,,"Enter valid username in the username/email input field (example:
+'testuser')
+
+","Username is entered in the field without any validation errors; field
+displays the entered text
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter valid password in the password input field (example:
+'ValidPassword123')
+
+","Password is entered in the field; field masks the input with
+dots/asterisks for security; no validation errors appear
+
+",,,,,,,,,
+,,,,,,,,,,,,"Click the Login button
+
+","Login button is clicked and becomes briefly disabled/shows loading state
+to prevent duplicate submissions
+
+",,,,,,,,,
+,,,,,,,,,,,,"System validates credentials against user database
+
+","Credential validation completes successfully; system confirms username
+exists and password matches stored hashed value
+
+",,,,,,,,,
+,,,,,,,,,,,,"System generates secure session token and establishes user session
+
+","Session token is created and stored securely; session state is
+initialized with authenticated user information
+
+",,,,,,,,,
+,,,,,,,,,,,,"System redirects user to authenticated dashboard/home page
+
+","User is successfully redirected to the authenticated dashboard or home
+page; URL changes to post-login destination (example: '/dashboard' or
+'/home')
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify authenticated session persists across page navigations
+
+","Session token/cookie is maintained; user can navigate to different pages
+within the application while remaining authenticated
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify user information is correctly loaded on the authenticated page
+
+","User-specific information is displayed on dashboard (example: username
+in header, user preferences, personalized content); no error messages
+appear
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify browser storage contains session information (if applicable)
+
+","Session token or authentication information is securely stored in
+httpOnly cookies or encrypted client-side storage; sensitive credentials
+are not exposed in localStorage
+
+",,,,,,,,,
+TC-2381,Authentication Rejection with Invalid Username,39691774,New Folder,Active,Krishna Nikam,Critical,Security,Not Automated,"Validates that login attempts with non-existent or incorrect usernames
+are properly rejected without revealing whether the username exists in
+the system. This test ensures unauthorized users cannot gain access
+through username guessing and that error messages maintain security by
+not disclosing user account information.
+
+","1.  Application is deployed and accessible via supported browsers
+    (Chrome, Firefox, Safari, Edge)
+2.  Browser is set to desktop resolution 1920x1080 with 100% zoom level
+3.  Internet connection is stable and active
+4.  No interfering browser extensions or JavaScript errors are present
+5.  HTTPS/TLS encryption is enabled for all communications
+6.  User database is populated with known valid usernames and email
+    addresses
+7.  Login page is fully loaded and functional
+8.  Session storage and cookies are enabled in the browser
+9.  Application is not in maintenance or degraded mode
+10. Password hashing mechanism (bcrypt, PBKDF2, or similar) is
+    operational
+
+",Steps,"Navigate to the login page and wait for it to fully load
+
+","Login page is displayed with username/email input field, password input
+field, and submit button
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:35:56,Krishna Nikam,02/22/2026 06:35:56,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548934
+,,,,,,,,,,,,"Enter a non-existent username (e.g., 'invaliduser123') in the username
+field
+
+","Username is entered in the field and displayed as typed
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter a valid password format (e.g., 'ValidPass123!') in the password
+field
+
+","Password is entered in the field and masked/hidden for security
+
+",,,,,,,,,
+,,,,,,,,,,,,"Click the login/submit button
+
+","Form submission is initiated and processed by the backend authentication
+service
+
+",,,,,,,,,
+,,,,,,,,,,,,"Wait for the authentication service to validate credentials against the
+user database
+
+","Authentication process completes and returns a rejection response
+
+",,,,,,,,,
+,,,,,,,,,,,,"Observe the error message displayed on the login page
+
+","A generic error message is displayed (e.g., 'Invalid credentials' or
+'Login failed') without revealing whether the username exists or is
+invalid
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that the user is still on the login page and no redirect has
+occurred
+
+","User remains on the login page; no session has been created and no
+redirect to dashboard/home page occurs
+
+",,,,,,,,,
+,,,,,,,,,,,,"Check browser console and network requests to confirm HTTPS usage and no
+credential exposure
+
+","All requests use HTTPS/TLS encryption; no plaintext credentials are
+visible in logs or network traffic
+
+",,,,,,,,,
+,,,,,,,,,,,,"Attempt to access a protected resource (e.g., dashboard URL) without
+logging in
+
+","User is redirected back to login page; access to protected resources is
+denied
+
+",,,,,,,,,
+TC-2387,Generic Error Message Display for Invalid Username,39691774,New Folder,Active,Krishna Nikam,High,Security,Not Automated,"Validates that error messages for invalid usernames provide generic
+feedback without revealing whether the username exists in the system.
+This test ensures that error messages like 'Invalid credentials' are
+displayed instead of 'Username not found', preventing username
+enumeration attacks.
+
+","1.  Browser environment is standardized: supported browser (Chrome,
+    Firefox, Safari, or Edge) is open and active
+2.  System is accessible and running with authentication functionality
+    enabled
+3.  HTTPS connection is active and verified
+4.  Test data setup: At least one valid user account exists in the
+    system with known credentials (e.g., username 'testuser1' and
+    password 'ValidPassword123')
+5.  Test account for invalid username testing is prepared: username does
+    not exist in the system (e.g., 'nonexistentuser123')
+6.  Login page is displayed and ready for input
+7.  Browser cache and cookies are cleared to ensure fresh session state
+8.  JavaScript is enabled in the browser
+
+",Steps,"Navigate to the login page and verify the page loads successfully
+
+","Login page is displayed with username/email input field, password input
+field, and login button visible
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:35:56,Krishna Nikam,02/22/2026 06:35:56,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548940
+,,,,,,,,,,,,"Enter an invalid username (example: 'nonexistentuser123') that does not
+exist in the system
+
+","Invalid username is entered in the username field without any immediate
+validation error
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter any password value (example: 'SomePassword123') in the password
+field
+
+","Password is entered in the password field
+
+",,,,,,,,,
+,,,,,,,,,,,,"Click the 'Login' or 'Sign In' button to submit the form
+
+","Form is submitted and system processes the authentication request
+
+",,,,,,,,,
+,,,,,,,,,,,,"Wait for system response and observe the error message displayed
+
+","A generic error message is displayed (example: 'Invalid credentials' or
+'Authentication failed') without revealing whether the username exists
+or not
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify the error message does NOT contain phrases such as 'Username not
+found', 'User does not exist', or any indication that the username is
+invalid
+
+","Error message is generic and does not distinguish between invalid
+username and invalid password scenarios
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that the user remains on the login page and is not redirected to
+the dashboard or home page
+
+","User is still on the login page; no authentication session is created
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that the error message is visible to the user in an appropriate
+location (example: below the form or in an error banner)
+
+","Error message is displayed clearly and in a user-visible area without
+requiring additional clicks or scrolling
+
+",,,,,,,,,
+TC-2400,Password Complexity Requirements Enforcement,39691774,New Folder,Active,Krishna Nikam,High,Security,Not Automated,"Tests that the login form enforces defined password complexity
+requirements including minimum length, character variety, and special
+character inclusion. This validation ensures that only passwords meeting
+security standards are accepted during login attempts.
+
+","1.  Browser environment standardized: Supported browser (Chrome,
+    Firefox, Safari, Edge) with desktop resolution 1920x1080 at 100%
+    zoom
+2.  Stable and active internet connection available
+3.  No interfering browser extensions or JavaScript errors
+4.  Login page is accessible and loaded successfully
+5.  Password complexity requirements are defined and enforced in the
+    system (e.g., minimum length, character variety, special characters)
+6.  System configuration specifies exact complexity rules (e.g., minimum
+    8 characters, at least 1 uppercase, 1 lowercase, 1 digit, 1 special
+    character)
+
+",Steps,"Navigate to the login page and locate the password input field
+
+","Login page loads successfully with password input field visible and
+accessible
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:35:56,Krishna Nikam,02/22/2026 06:35:56,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548953
+,,,,,,,,,,,,"Enter a password that does not meet minimum length requirements (e.g.,
+password shorter than the defined minimum) in the password field
+
+","System displays password complexity validation error indicating minimum
+length requirement is not met
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter a password that meets minimum length but lacks required character
+variety (e.g., only lowercase letters) in the password field
+
+","Form displays validation error indicating that multiple character types
+(uppercase, lowercase, digits, special characters) are required
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter a password that meets length and character variety requirements
+but lacks special characters (if required by policy) in the password
+field
+
+","System displays validation error indicating that special character
+inclusion is required
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter a password that meets all complexity requirements (e.g., contains
+uppercase, lowercase, digits, and special characters at defined minimum
+length) in the password field
+
+","Password passes all complexity validation checks and is accepted by the
+form
+
+",,,,,,,,,
+,,,,,,,,,,,,"Attempt to submit the login form with the valid complex password and a
+valid username
+
+","Form accepts the password meeting all complexity requirements and
+proceeds to credential validation
+
+",,,,,,,,,
+TC-2394,Successful Authentication with Valid Email Address and Password,39691774,New Folder,Active,Krishna Nikam,Critical,Security,Not Automated,"Verifies that users can authenticate successfully using their email
+address instead of username along with the correct password. This test
+confirms that the system supports both username and email as valid login
+identifiers and properly processes email-based authentication.
+
+","1.  User has a valid registered account with an email address and
+    password
+2.  Email verification is complete (if required by the system)
+3.  Account is in active status and not locked or suspended
+4.  Browser is set to a supported version (Chrome, Firefox, Safari,
+    Edge)
+5.  Browser resolution is set to 1920x1080 with 100% zoom level
+6.  Stable and active internet connection is available
+7.  No interfering browser extensions or JavaScript errors are present
+8.  Login page is accessible and fully loaded
+9.  Cookies are enabled in the browser
+
+",Steps,"Navigate to the login page
+
+","Login page is displayed with email/username field, password field, and
+submit button visible
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:35:56,Krishna Nikam,02/22/2026 06:35:56,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548947
+,,,,,,,,,,,,"Enter the valid email address in the email/username field
+
+","Email address is entered correctly in the input field without any
+validation errors
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter the correct password in the password field
+
+","Password is entered in the field (displayed as masked characters for
+security)
+
+",,,,,,,,,
+,,,,,,,,,,,,"Click the 'Login' or 'Submit' button
+
+","Login request is processed and sent to the server
+
+",,,,,,,,,
+,,,,,,,,,,,,"Wait for server authentication to complete
+
+","Server validates the email address and password against the user
+database
+
+",,,,,,,,,
+,,,,,,,,,,,,"Observe the authentication response
+
+","Authentication is successful; user is authenticated and ready for
+redirection
+
+",,,,,,,,,
+TC-2401,Empty Username Field Validation and Error Handling,39691774,New Folder,Active,Krishna Nikam,Critical,Security,Not Automated,"Verifies that the login form properly validates and rejects login
+attempts with empty username fields, displaying appropriate validation
+error messages. This test ensures that required field validation is
+enforced before credential processing.
+
+","1.  Browser environment standardized: Supported browser (Chrome,
+    Firefox, Safari, Edge) with desktop resolution 1920x1080 at 100%
+    zoom
+2.  Stable and active internet connection available
+3.  No interfering browser extensions or JavaScript errors
+4.  Login page is accessible and loaded successfully
+5.  Username field is designated as a required field in the form
+    validation rules
+6.  Clear error messages are configured for empty field validation
+
+",Steps,"Navigate to the login page and observe all form fields
+
+","Login page loads successfully with username and password input fields
+visible and empty
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:35:56,Krishna Nikam,02/22/2026 06:35:56,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548954
+,,,,,,,,,,,,"Leave the username field empty and click the login submit button
+
+","Form validation is triggered and prevents form submission
+
+",,,,,,,,,
+,,,,,,,,,,,,"Observe the error message displayed for the empty username field
+
+","Clear validation error message is displayed indicating that username
+field is required (e.g., 'Username is required' or similar message)
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that the username field is highlighted or visually marked to
+indicate the validation error
+
+","Username input field is visually highlighted (e.g., red border or
+background) to draw attention to the validation error
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter a valid username or email in the username field
+
+","Error message disappears and the field validation error is cleared
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that the form can now proceed with a valid username entered
+
+","With valid username populated, the form no longer displays empty field
+validation error
+
+",,,,,,,,,
+TC-2382,Authentication Rejection with Invalid Email Address,39691774,New Folder,Active,Krishna Nikam,Critical,Security,Not Automated,"Verifies that login attempts using non-existent or incorrect email
+addresses are rejected with secure error messaging that does not reveal
+whether the email is registered in the system. This test protects
+against email enumeration attacks while providing appropriate user
+feedback.
+
+","1.  Application is deployed and accessible via supported browsers
+    (Chrome, Firefox, Safari, Edge)
+2.  Browser is set to desktop resolution 1920x1080 with 100% zoom level
+3.  Internet connection is stable and active
+4.  No interfering browser extensions or JavaScript errors are present
+5.  HTTPS/TLS encryption is enabled for secure credential transmission
+6.  User database is populated with known valid email addresses
+7.  Login page is fully loaded and functional
+8.  Email validation mechanism is implemented and operational
+9.  Session storage and cookies are enabled in the browser
+10. Application is not in maintenance or degraded mode
+
+",Steps,"Navigate to the login page and ensure it is fully loaded
+
+","Login page is displayed with username/email input field, password input
+field, and submit button
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:35:56,Krishna Nikam,02/22/2026 06:35:56,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548935
+,,,,,,,,,,,,"Enter a non-existent email address (e.g., 'nonexistent@example.com') in
+the email field
+
+","Email address is entered in the field and displayed as typed
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter a valid password format (e.g., 'ValidPass123!') in the password
+field
+
+","Password is entered and masked/hidden for security
+
+",,,,,,,,,
+,,,,,,,,,,,,"Click the login/submit button
+
+","Form submission is initiated and processed by the authentication service
+
+",,,,,,,,,
+,,,,,,,,,,,,"Wait for the authentication service to validate the email and
+credentials against the user database
+
+","Authentication process completes and returns a rejection response
+
+",,,,,,,,,
+,,,,,,,,,,,,"Observe the error message displayed on the login page
+
+","A generic error message is displayed (e.g., 'Invalid credentials' or
+'Login failed') without indicating whether the email address is or is
+not registered
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that no session token or authenticated session has been created
+
+","User remains on the login page; no authentication cookies or session
+tokens are present in browser storage
+
+",,,,,,,,,
+,,,,,,,,,,,,"Confirm that the error message does not differentiate between 'email not
+found' and 'incorrect password' scenarios
+
+","Error message is consistent and generic, preventing email enumeration
+attacks
+
+",,,,,,,,,
+,,,,,,,,,,,,"Attempt to access protected resources via direct URL navigation
+
+","User is redirected to login page; access is denied and no authenticated
+session exists
+
+",,,,,,,,,
+TC-2388,Generic Error Message Display for Invalid Password,39691774,New Folder,Active,Krishna Nikam,High,Security,Not Automated,"Tests that error messages for incorrect passwords do not distinguish
+between wrong password and invalid username scenarios. This ensures that
+attackers cannot determine valid usernames by analyzing different error
+message patterns for password failures.
+
+","1.  Browser environment is standardized: supported browser (Chrome,
+    Firefox, Safari, or Edge) is open and active
+2.  System is accessible and running with authentication functionality
+    enabled
+3.  HTTPS connection is active and verified
+4.  Test data setup: At least one valid user account exists in the
+    system with known credentials (example: username 'testuser1' and
+    password 'ValidPassword123')
+5.  Invalid password test data is prepared (example:
+    'IncorrectPassword456')
+6.  Login page is displayed and ready for input
+7.  Browser cache and cookies are cleared to ensure fresh session state
+8.  JavaScript is enabled in the browser
+
+",Steps,"Navigate to the login page and verify the page loads successfully
+
+","Login page is displayed with username/email input field, password input
+field, and login button visible
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:35:56,Krishna Nikam,02/22/2026 06:35:56,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548941
+,,,,,,,,,,,,"Enter a valid username (example: 'testuser1') that exists in the system
+
+","Valid username is entered in the username field
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter an incorrect/invalid password (example: 'IncorrectPassword456')
+that does not match the account
+
+","Incorrect password is entered in the password field
+
+",,,,,,,,,
+,,,,,,,,,,,,"Click the 'Login' or 'Sign In' button to submit the form
+
+","Form is submitted and system processes the authentication request
+
+",,,,,,,,,
+,,,,,,,,,,,,"Wait for system response and observe the error message displayed
+
+","A generic error message is displayed (example: 'Invalid credentials' or
+'Authentication failed')
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that the error message is identical or indistinguishable from the
+error message shown when an invalid username is used
+
+","Error message does not indicate specifically that the password is
+incorrect; message is generic and consistent with invalid username
+scenarios
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify the error message does NOT contain phrases such as 'Password is
+incorrect', 'Wrong password', 'Password mismatch', or similar
+password-specific indicators
+
+","Error message remains generic without revealing password validation
+details
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that the user remains on the login page and is not redirected to
+the dashboard or home page
+
+","User is still on the login page; no authentication session is created
+
+",,,,,,,,,
+,,,,,,,,,,,,"Compare the error message structure and format with the error message
+from a test case with invalid username to confirm consistency
+
+","Error message format and structure are identical to or indistinguishable
+from invalid username error message
+
+",,,,,,,,,
+TC-2395,Session Creation and Persistence After Successful Login,39691774,New Folder,Active,Krishna Nikam,High,Security,Not Automated,"Confirms that a secure session token is generated upon successful
+authentication and persists across page navigations within the
+authenticated area. This test validates that the session state is
+maintained correctly and users remain logged in during their browsing
+session.
+
+","1.  User has a valid registered account with active status
+2.  User is not currently logged in (fresh session)
+3.  Browser supports session storage and cookies are enabled
+4.  Session storage mechanism (server-side session store or secure token
+    storage) is functional
+5.  Browser is set to a supported version (Chrome, Firefox, Safari,
+    Edge)
+6.  Browser resolution is set to 1920x1080 with 100% zoom level
+7.  Stable and active internet connection is available
+8.  No interfering browser extensions are present
+9.  Login page is accessible and fully loaded
+
+",Steps,"Navigate to the login page
+
+","Login page is displayed with email/username field, password field, and
+submit button
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:35:56,Krishna Nikam,02/22/2026 06:35:56,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548948
+,,,,,,,,,,,,"Enter valid username/email and correct password
+
+","Credentials are entered in the respective input fields
+
+",,,,,,,,,
+,,,,,,,,,,,,"Click the 'Login' or 'Submit' button
+
+","Credentials are submitted to the server for authentication
+
+",,,,,,,,,
+,,,,,,,,,,,,"Wait for server to process authentication
+
+","Server validates credentials and generates a secure session token upon
+successful authentication
+
+",,,,,,,,,
+,,,,,,,,,,,,"Observe session token creation
+
+","Session token is created and stored securely (in browser storage or as
+httpOnly cookie)
+
+",,,,,,,,,
+,,,,,,,,,,,,"User is redirected to authenticated area
+
+","User lands on the authenticated home/dashboard page with session token
+active
+
+",,,,,,,,,
+,,,,,,,,,,,,"Navigate to a different page within the authenticated area (e.g., from
+dashboard to profile page)
+
+","Session token is validated on the new page; user remains logged in and
+page loads with authenticated content
+
+",,,,,,,,,
+,,,,,,,,,,,,"Refresh the current page using browser refresh button
+
+","Page reloads with session token validated; user remains logged in and
+content persists
+
+",,,,,,,,,
+,,,,,,,,,,,,"Navigate back using browser back button
+
+","Navigation succeeds with session maintained; user remains authenticated
+
+",,,,,,,,,
+TC-2389,Clear User Guidance Without Security Information Disclosure,39691774,New Folder,Active,Krishna Nikam,Medium,Security,Not Automated,"Verifies that error messages provide helpful guidance to legitimate
+users while maintaining security by not revealing sensitive system
+information. This test ensures that error messages are user-friendly yet
+secure, helping users troubleshoot without exposing attack vectors.
+
+","1.  Browser environment is standardized: supported browser (Chrome,
+    Firefox, Safari, or Edge) is open and active
+2.  System is accessible and running with authentication functionality
+    enabled
+3.  HTTPS connection is active and verified
+4.  Login page is displayed and ready for input
+5.  Browser cache and cookies are cleared to ensure fresh session state
+6.  JavaScript is enabled in the browser
+7.  Test data: Invalid credentials are prepared (example: username
+    'invaliduser' and password 'invalidpass')
+
+",Steps,"Navigate to the login page and verify the page loads successfully
+
+","Login page is displayed with username/email input field, password input
+field, login button, and password recovery link (if available) visible
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:35:56,Krishna Nikam,02/22/2026 06:35:56,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548942
+,,,,,,,,,,,,"Enter invalid credentials (example: username 'invaliduser' and password
+'invalidpass')
+
+","Invalid credentials are entered in respective fields
+
+",,,,,,,,,
+,,,,,,,,,,,,"Click the 'Login' or 'Sign In' button to submit the form
+
+","Form is submitted and system processes the authentication request
+
+",,,,,,,,,
+,,,,,,,,,,,,"Wait for system response and observe the error message displayed
+
+","An error message is displayed that provides generic feedback without
+exposing system details
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that the error message provides helpful guidance to legitimate
+users (example: 'Please check your username and password and try again')
+
+","Error message includes guidance that helps users understand what went
+wrong without exposing security information
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that if a password recovery option exists, it is mentioned or
+accessible from the login page
+
+","Password recovery/forgot password link or option is visible and
+accessible on the login page
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that the error message does NOT contain sensitive information
+such as: database error messages, system file paths, internal IP
+addresses, API endpoints, or framework/technology stack details
+
+","Error message is clean of technical/sensitive information and presents a
+user-friendly message only
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that the error message is clearly readable and positioned in an
+accessible location on the page
+
+","Error message is visible without requiring additional scrolling or
+interactions; text is readable and contrasted appropriately
+
+",,,,,,,,,
+TC-2383,Authentication Rejection with Incorrect Password for Valid Username,39691774,New Folder,Active,Krishna Nikam,Critical,Security,Not Automated,"Tests that login attempts with correct username but wrong password are
+rejected without indicating that the username is valid. This ensures
+that attackers cannot determine valid usernames through password
+guessing attempts and maintains credential security.
+
+","1.  Application is deployed and accessible via supported browsers
+    (Chrome, Firefox, Safari, Edge)
+2.  Browser is set to desktop resolution 1920x1080 with 100% zoom level
+3.  Internet connection is stable and active
+4.  No interfering browser extensions or JavaScript errors are present
+5.  HTTPS/TLS encryption is enabled for secure credential transmission
+6.  A known valid username exists in the user database (e.g.,
+    'testuser')
+7.  Login page is fully loaded and functional
+8.  Password validation and hashing mechanism is operational
+9.  Session management system is operational
+10. Browser cookies and session storage are enabled
+
+",Steps,"Navigate to the login page and wait for it to fully load
+
+","Login page is displayed with username/email input field, password input
+field, and submit button
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:35:56,Krishna Nikam,02/22/2026 06:35:56,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548936
+,,,,,,,,,,,,"Enter a known valid username (e.g., 'testuser') in the username field
+
+","Username is entered in the field and displayed as typed
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter an incorrect password (e.g., 'WrongPassword123!') that does not
+match the user's actual password in the password field
+
+","Password is entered and masked/hidden for security
+
+",,,,,,,,,
+,,,,,,,,,,,,"Click the login/submit button
+
+","Form submission is initiated and processed by the authentication service
+
+",,,,,,,,,
+,,,,,,,,,,,,"Wait for the authentication service to validate credentials against the
+user database
+
+","Authentication process completes and returns a rejection response
+because password does not match
+
+",,,,,,,,,
+,,,,,,,,,,,,"Observe the error message displayed on the login page
+
+","A generic error message is displayed (e.g., 'Invalid credentials' or
+'Login failed') without revealing that the username is valid
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that the user is still on the login page
+
+","User remains on the login page; no redirect to authenticated area occurs
+
+",,,,,,,,,
+,,,,,,,,,,,,"Confirm that no session token has been created in browser storage or
+cookies
+
+","Browser cookies and session storage contain no authentication tokens or
+session identifiers
+
+",,,,,,,,,
+,,,,,,,,,,,,"Attempt to access protected resources using direct URL navigation
+
+","User is redirected to login page; access is denied and authentication is
+not granted
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that error message is identical whether username is invalid or
+password is incorrect
+
+","Same generic error message is displayed in both scenarios, preventing
+username enumeration attacks
+
+",,,,,,,,,
+TC-2402,Empty Password Field Validation and Error Handling,39691774,New Folder,Active,Krishna Nikam,Critical,Security,Not Automated,"Tests that the login form correctly identifies and rejects login
+attempts with empty password fields, providing clear validation feedback
+to users. This ensures that password requirements are enforced at the
+form level before authentication processing.
+
+","1.  Browser environment standardized: Supported browser (Chrome,
+    Firefox, Safari, Edge) with desktop resolution 1920x1080 at 100%
+    zoom
+2.  Stable and active internet connection available
+3.  No interfering browser extensions or JavaScript errors
+4.  Login page is accessible and loaded successfully
+5.  Password field is designated as a required field in the form
+    validation rules
+6.  Clear error messages are configured for empty password field
+    validation
+
+",Steps,"Navigate to the login page and observe the password input field
+
+","Login page loads successfully with password input field visible and
+empty
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:35:56,Krishna Nikam,02/22/2026 06:35:56,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548955
+,,,,,,,,,,,,"Enter a valid username or email in the username field
+
+","Username is accepted and entered in the username field
+
+",,,,,,,,,
+,,,,,,,,,,,,"Leave the password field empty and click the login submit button
+
+","Form validation is triggered and prevents form submission due to empty
+password field
+
+",,,,,,,,,
+,,,,,,,,,,,,"Observe the error message displayed for the empty password field
+
+","Clear validation error message is displayed indicating that password
+field is required (e.g., 'Password is required' or similar message)
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that the password field is highlighted or visually marked to
+indicate the validation error
+
+","Password input field is visually highlighted (e.g., red border, error
+icon, or background color) to indicate validation failure
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter a valid password in the password field
+
+","Error message disappears and the field validation error is cleared upon
+entering password
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that the form can now proceed with both valid username and
+password populated
+
+","With valid password entered, the form no longer displays empty password
+field validation error and is ready for submission
+
+",,,,,,,,,
+TC-2384,Prevention of Session Creation for Invalid Login Attempts,39691774,New Folder,Active,Krishna Nikam,High,Security,Not Automated,"Confirms that no session tokens or authenticated sessions are created
+when login attempts fail due to invalid credentials. This test ensures
+that failed authentication does not result in any form of unauthorized
+access or partial authentication state.
+
+","1.  Application is deployed and accessible via supported browsers
+    (Chrome, Firefox, Safari, Edge)
+2.  Browser is set to desktop resolution 1920x1080 with 100% zoom level
+3.  Internet connection is stable and active
+4.  No interfering browser extensions or JavaScript errors are present
+5.  HTTPS/TLS encryption is enabled for all communications
+6.  Session management and token generation system is operational
+7.  Login page is fully loaded and functional
+8.  Browser developer tools are available for session inspection
+9.  Cookies and session storage are enabled in browser
+10. Multiple invalid credential scenarios can be tested (invalid
+    username, invalid password, invalid email, etc.)
+
+",Steps,"Open browser developer tools and navigate to the Application/Storage tab
+to monitor cookies and session storage
+
+","Developer tools are open and ready to monitor session tokens and
+authentication-related storage
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:35:56,Krishna Nikam,02/22/2026 06:35:56,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548937
+,,,,,,,,,,,,"Navigate to the login page
+
+","Login page is fully loaded with username/email and password input fields
+
+",,,,,,,,,
+,,,,,,,,,,,,"Record any existing session tokens or cookies in the Application/Storage
+tab (baseline)
+
+","Baseline session state is documented; no authentication tokens are
+present initially
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter invalid credentials (e.g., non-existent username 'invaliduser' and
+password 'wrongpass') in the login form
+
+","Invalid credentials are entered in both fields
+
+",,,,,,,,,
+,,,,,,,,,,,,"Click the login/submit button
+
+","Form submission is initiated and authentication is attempted
+
+",,,,,,,,,
+,,,,,,,,,,,,"Wait for the authentication service to process the request and return a
+rejection response
+
+","Authentication fails and returns error response
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify the error message is displayed on the login page
+
+","Generic error message is shown to the user
+
+",,,,,,,,,
+,,,,,,,,,,,,"Check the Application/Storage tab in developer tools for any new session
+tokens, authentication cookies, or session identifiers
+
+","No new authentication tokens or session cookies are created; browser
+storage remains unchanged from baseline
+
+",,,,,,,,,
+,,,,,,,,,,,,"Inspect HTTP response headers (using Network tab) to confirm no
+Set-Cookie headers or token-related headers are present
+
+","Response headers contain no authentication-related cookies or session
+tokens
+
+",,,,,,,,,
+,,,,,,,,,,,,"Attempt direct access to a protected resource (e.g., /dashboard or
+/profile) without logging in
+
+","Request is denied and user is redirected to login page; no
+authentication state exists
+
+",,,,,,,,,
+,,,,,,,,,,,,"Repeat the test with different invalid credential combinations (invalid
+email, correct username with wrong password, etc.)
+
+","In all cases, no session tokens are created and protected resources
+remain inaccessible
+
+",,,,,,,,,
+TC-2390,Consistent Error Message Format Across Authentication Failures,39691774,New Folder,Active,Krishna Nikam,Medium,Security,Not Automated,"Tests that all authentication failure scenarios display error messages
+in a consistent format and structure to prevent information leakage
+through message variations. This ensures that error message consistency
+cannot be used to infer different types of authentication failures.
+
+","1.  Browser environment is standardized: supported browser (Chrome,
+    Firefox, Safari, or Edge) is open and active
+2.  System is accessible and running with authentication functionality
+    enabled
+3.  HTTPS connection is active and verified
+4.  Test data setup: At least one valid user account exists (example:
+    username 'testuser1' with password 'ValidPassword123')
+5.  Invalid username test data prepared (example: 'nonexistentuser')
+6.  Invalid password test data prepared (example: 'IncorrectPassword')
+7.  Empty field test data: prepared to test with empty username/password
+8.  Login page is displayed and ready for input
+9.  Browser cache and cookies are cleared to ensure fresh session state
+10. JavaScript is enabled in the browser
+
+",Steps,"Navigate to the login page and verify the page loads successfully
+
+","Login page is displayed with input fields and login button visible
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:35:56,Krishna Nikam,02/22/2026 06:35:56,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548943
+,,,,,,,,,,,,"Test Case 1 - Invalid Username: Enter invalid username (example:
+'nonexistentuser') and any password, then click Login
+
+","System returns an error message
+
+",,,,,,,,,
+,,,,,,,,,,,,"Document the exact error message format and text from the invalid
+username scenario
+
+","Error message is captured (example: 'Invalid credentials' format and
+structure noted)
+
+",,,,,,,,,
+,,,,,,,,,,,,"Clear the form and navigate back to login page
+
+","Login form is reset and ready for next test
+
+",,,,,,,,,
+,,,,,,,,,,,,"Test Case 2 - Invalid Password: Enter valid username (example:
+'testuser1') and invalid password (example: 'IncorrectPassword'), then
+click Login
+
+","System returns an error message
+
+",,,,,,,,,
+,,,,,,,,,,,,"Document the exact error message format and text from the invalid
+password scenario
+
+","Error message is captured for comparison
+
+",,,,,,,,,
+,,,,,,,,,,,,"Compare the error message format, wording, and structure from both test
+cases
+
+","Both error messages are identical or indistinguishable in format,
+wording, and structure
+
+",,,,,,,,,
+,,,,,,,,,,,,"Test Case 3 - Empty Username: Leave username field empty, enter any
+password, then click Login
+
+","System returns an appropriate validation error or authentication error
+
+",,,,,,,,,
+,,,,,,,,,,,,"Document the error message format from empty username scenario
+
+","Error message format is captured for comparison
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that validation errors (empty fields) may have a different format
+than authentication errors, but authentication-related errors all follow
+the same consistent format
+
+","Validation errors are distinct from authentication errors; all
+authentication failure messages are consistent
+
+",,,,,,,,,
+,,,,,,,,,,,,"Perform multiple authentication failure scenarios and verify all follow
+the same error message format and structure
+
+","Consistent error message format is maintained across all authentication
+failure scenarios to prevent information leakage
+
+",,,,,,,,,
+TC-2403,Input Sanitization for Special Characters in Login Fields,39691774,New Folder,Active,Krishna Nikam,High,Security,Not Automated,"Validates that special characters, symbols, and potentially malicious
+input in username and password fields are properly sanitized without
+breaking legitimate authentication. This test ensures that input
+sanitization protects against injection attacks while preserving valid
+special characters in credentials.
+
+","1.  Browser environment standardized: Supported browser (Chrome,
+    Firefox, Safari, Edge) with desktop resolution 1920x1080 at 100%
+    zoom
+2.  Stable and active internet connection available
+3.  No interfering browser extensions or JavaScript errors
+4.  Login page is accessible and loaded successfully
+5.  Input sanitization mechanisms are configured and active in the
+    system
+6.  System has predefined rules for handling special characters in
+    credentials (e.g., single quotes, double quotes, angle brackets,
+    etc.)
+7.  Database contains test user accounts with special characters in
+    their credentials for validation
+
+",Steps,"Navigate to the login page and locate the username and password input
+fields
+
+","Login page loads successfully with both input fields visible and ready
+for interaction
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:35:56,Krishna Nikam,02/22/2026 06:35:56,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548956
+,,,,,,,,,,,,"Enter a username containing special characters (e.g., single quote
+character like 'user@ex'ample.com' or similar) in the username field
+
+","Username with special characters is accepted by the form field without
+blocking input
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter a password containing special characters (e.g., exclamation mark,
+hash, dollar sign, percentage symbol like 'Pass@123!#%') in the password
+field
+
+","Password with special characters is accepted in the password field and
+stored properly
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter a username with potentially malicious input patterns (e.g., SQL
+injection attempt like ""' OR '1'='1"") in the username field
+
+","System accepts the input but applies sanitization rules; the input is
+treated as literal string data, not executable code
+
+",,,,,,,,,
+,,,,,,,,,,,,"Click the login submit button with special characters and potentially
+malicious patterns in both fields
+
+","Form submission proceeds with sanitized input; special characters are
+properly escaped or encoded to prevent injection attacks
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that the login request is processed safely without executing any
+code from the input
+
+","Backend validation confirms that special characters were sanitized
+properly and no code injection occurred; authentication is validated
+against actual credentials
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter credentials with valid special characters that are part of
+legitimate email or password (e.g., 'user+tag@domain.com' or
+'MyPass@2024!') and attempt login
+
+","Legitimate special characters in valid credentials are preserved and not
+stripped, allowing proper authentication with credentials containing
+valid special characters
+
+",,,,,,,,,
+TC-2396,Redirection to Authenticated Dashboard After Valid Login,39691774,New Folder,Active,Krishna Nikam,High,Security,Not Automated,"Verifies that users are automatically redirected to the appropriate
+authenticated dashboard or home page after successful login. This test
+ensures the post-authentication user experience flows correctly and
+users land on the expected page.
+
+","1.  User has a valid registered account with active status
+2.  User is not currently logged in
+3.  Browser is set to a supported version (Chrome, Firefox, Safari,
+    Edge)
+4.  Browser resolution is set to 1920x1080 with 100% zoom level
+5.  Cookies are enabled in the browser
+6.  Stable and active internet connection is available
+7.  No interfering browser extensions are present
+8.  Login page is accessible and fully loaded
+9.  Authenticated dashboard/home page is accessible
+
+",Steps,"Navigate to the login page
+
+","Login page is fully loaded and displays login form with email/username
+and password fields
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:35:56,Krishna Nikam,02/22/2026 06:35:56,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548949
+,,,,,,,,,,,,"Enter valid email/username in the email/username field
+
+","Valid email/username is entered without any validation errors
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter correct password in the password field
+
+","Password is entered in the field (masked for security)
+
+",,,,,,,,,
+,,,,,,,,,,,,"Click the 'Login' or 'Submit' button
+
+","Login request is processed; authentication begins
+
+",,,,,,,,,
+,,,,,,,,,,,,"Wait for authentication process to complete
+
+","Server validates credentials successfully and prepares redirection
+
+",,,,,,,,,
+,,,,,,,,,,,,"Observe redirection behavior
+
+","User is automatically redirected to the authenticated dashboard or home
+page
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify the landing page URL and content
+
+","Current URL matches the authenticated dashboard/home page URL; page
+displays authenticated user content (e.g., user name, profile
+information, personalized content)
+
+",,,,,,,,,
+TC-2397,Case Sensitive Password Authentication Validation,39691774,New Folder,Active,Krishna Nikam,Medium,Security,Not Automated,"Tests that password authentication correctly handles case sensitivity,
+accepting only the exact password case and rejecting variations with
+different capitalization. This validates that password security is
+maintained through proper case-sensitive matching.
+
+","1.  User has a valid registered account with a password containing mixed
+    case characters (e.g., 'MyPassword123')
+2.  Account is in active status and not locked
+3.  Browser is set to a supported version (Chrome, Firefox, Safari,
+    Edge)
+4.  Browser resolution is set to 1920x1080 with 100% zoom level
+5.  Cookies are enabled in the browser
+6.  Stable and active internet connection is available
+7.  No interfering browser extensions are present
+8.  Login page is accessible and fully loaded
+
+",Steps,"Navigate to the login page
+
+","Login page is displayed with email/username field, password field, and
+login button
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:35:56,Krishna Nikam,02/22/2026 06:35:56,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548950
+,,,,,,,,,,,,"Enter valid username/email
+
+","Valid username/email is entered in the respective field
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter the password with all characters in correct case (e.g.,
+'MyPassword123')
+
+","Correct password with proper case is entered in the password field
+
+",,,,,,,,,
+,,,,,,,,,,,,"Click the 'Login' button
+
+","Login request is submitted to the server
+
+",,,,,,,,,
+,,,,,,,,,,,,"Wait for authentication to complete
+
+","Server validates the case-sensitive password and authentication succeeds
+
+",,,,,,,,,
+,,,,,,,,,,,,"Observe successful authentication response
+
+","User is authenticated and redirected to authenticated area; login is
+successful
+
+",,,,,,,,,
+,,,,,,,,,,,,"Return to login page and enter the same username/email
+
+","Username/email is entered again
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter password with incorrect case variation (e.g., 'mypassword123' or
+'MYPASSWORD123')
+
+","Incorrect case password is entered in the password field
+
+",,,,,,,,,
+,,,,,,,,,,,,"Click the 'Login' button
+
+","Login request is submitted with incorrect case password
+
+",,,,,,,,,
+,,,,,,,,,,,,"Wait for authentication validation
+
+","Server validates the case-sensitive password and finds mismatch;
+authentication fails
+
+",,,,,,,,,
+,,,,,,,,,,,,"Observe authentication failure response
+
+","Error message is displayed indicating invalid credentials; user is not
+authenticated and remains on login page
+
+",,,,,,,,,
+TC-2391,Prevention of Sensitive Data Exposure in Error Responses,39691774,New Folder,Active,Krishna Nikam,High,Security,Not Automated,"Validates that error messages and HTTP responses do not contain
+sensitive information such as database errors, system paths, or internal
+application details. This test ensures that authentication failures do
+not inadvertently expose system architecture or configuration
+information.
+
+","1.  Browser environment is standardized: supported browser (Chrome,
+    Firefox, Safari, or Edge) is open and active
+2.  System is accessible and running with authentication functionality
+    enabled
+3.  HTTPS connection is active and verified
+4.  Network monitoring tools (example: browser Developer Tools Network
+    tab) are available for inspecting HTTP responses
+5.  Test data: Invalid credentials prepared (example: username
+    'invaliduser' and password 'invalidpass')
+6.  Login page is displayed and ready for input
+7.  Browser cache and cookies are cleared
+8.  JavaScript is enabled in the browser
+
+",Steps,"Open Browser Developer Tools (F12 or right-click > Inspect) and
+navigate to the Network tab
+
+","Network tab is open and ready to capture HTTP requests and responses
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:35:56,Krishna Nikam,02/22/2026 06:35:56,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548944
+,,,,,,,,,,,,"Navigate to the login page and verify the page loads successfully
+
+","Login page is displayed; Network tab shows page load request without
+sensitive information
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter invalid credentials (example: username 'invaliduser' and password
+'invalidpass')
+
+","Invalid credentials are entered in respective fields
+
+",,,,,,,,,
+,,,,,,,,,,,,"Click the 'Login' or 'Sign In' button to submit the form while observing
+the Network tab
+
+","Authentication request is sent to the server; request appears in Network
+tab
+
+",,,,,,,,,
+,,,,,,,,,,,,"Locate the authentication request in the Network tab and click on it to
+view request/response details
+
+","Request details are displayed showing method (POST), endpoint, headers,
+and payload
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that the HTTP response status code is appropriate (example: 401
+Unauthorized or 400 Bad Request) for authentication failure
+
+","Response status code indicates authentication failure without exposing
+additional information
+
+",,,,,,,,,
+,,,,,,,,,,,,"Examine the response body/payload in the Network tab to verify it does
+not contain: database error messages, SQL error details, system file
+paths, stack traces, or internal API endpoint information
+
+","Response body contains only the generic error message displayed to the
+user; no sensitive technical information is present
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that the HTML response does not contain commented-out code, debug
+information, or sensitive data in meta tags or data attributes
+
+","HTML source is clean of debug information and sensitive data
+
+",,,,,,,,,
+,,,,,,,,,,,,"Check the response headers for any sensitive information such as server
+type/version, internal IPs, or technology stack details
+
+","Response headers do not expose sensitive server or application
+information
+
+",,,,,,,,,
+,,,,,,,,,,,,"View the rendered error message on the page
+
+","Error message displayed to user matches the sanitized response and
+contains no sensitive information
+
+",,,,,,,,,
+,,,,,,,,,,,,"Repeat the test with different invalid credential combinations to verify
+consistent secure error handling across multiple authentication failures
+
+","All authentication failure responses maintain consistent security
+posture with no sensitive data exposure
+
+",,,,,,,,,
+TC-2385,Secure Error Message Display Without Information Disclosure,39691774,New Folder,Active,Krishna Nikam,High,Security,Not Automated,"Verifies that error messages for invalid credentials provide generic,
+non-revealing feedback that does not distinguish between invalid
+username and invalid password scenarios. This prevents attackers from
+using error message differences to enumerate valid accounts.
+
+","1.  Application is deployed and accessible via supported browsers
+    (Chrome, Firefox, Safari, Edge)
+2.  Browser is set to desktop resolution 1920x1080 with 100% zoom level
+3.  Internet connection is stable and active
+4.  No interfering browser extensions or JavaScript errors are present
+5.  User database is populated with known valid and invalid usernames
+    and email addresses
+6.  Login page is fully loaded and functional
+7.  Error message rendering system is implemented and operational
+8.  Session management is operational
+9.  Browser console is available for monitoring error responses
+10. Multiple invalid credential scenarios can be tested sequentially
+
+",Steps,"Navigate to the login page and ensure it is fully loaded
+
+","Login page is displayed with input fields and submit button
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:35:56,Krishna Nikam,02/22/2026 06:35:56,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548938
+,,,,,,,,,,,,"Open browser developer tools and navigate to the Console and Network
+tabs
+
+","Developer tools are open to monitor error messages and network responses
+
+",,,,,,,,,
+,,,,,,,,,,,,"Test Scenario 1: Enter a non-existent username (e.g., 'invaliduser') and
+any password (e.g., 'password123') and click login
+
+","Form is submitted and authentication fails
+
+",,,,,,,,,
+,,,,,,,,,,,,"Observe and record the error message displayed for the non-existent
+username scenario
+
+","Error message is displayed (e.g., 'Invalid credentials' or 'Login
+failed')
+
+",,,,,,,,,
+,,,,,,,,,,,,"Test Scenario 2: Enter a valid username (e.g., 'testuser') and an
+incorrect password (e.g., 'wrongpassword') and click login
+
+","Form is submitted and authentication fails due to incorrect password
+
+",,,,,,,,,
+,,,,,,,,,,,,"Observe and record the error message displayed for the incorrect
+password scenario
+
+","Error message is displayed (e.g., 'Invalid credentials' or 'Login
+failed')
+
+",,,,,,,,,
+,,,,,,,,,,,,"Compare the error messages from Scenario 1 (invalid username) and
+Scenario 2 (incorrect password)
+
+","Error messages are identical or contain no distinguishing information
+between the two scenarios
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that the error message does not contain phrases like 'username
+not found', 'user does not exist', 'password incorrect', or similar
+revealing text
+
+","Error message is generic and non-revealing; no information is disclosed
+that could indicate which credential component is invalid
+
+",,,,,,,,,
+,,,,,,,,,,,,"Check the Network tab to inspect the HTTP response body and headers for
+any additional information disclosure
+
+","Response body and headers contain no additional details that
+differentiate between invalid username and invalid password
+
+",,,,,,,,,
+,,,,,,,,,,,,"Test with an invalid email address (e.g., 'nonexistent@example.com') and
+observe the error message
+
+","Same generic error message is displayed as with invalid
+username/password scenarios
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that error messages are rendered securely without XSS
+vulnerabilities (inspect HTML source for any unescaped user input)
+
+","Error messages are properly escaped and sanitized; no XSS injection
+risks are present
+
+",,,,,,,,,
+TC-2404,Maximum Length Validation for Username and Password Fields,39691774,New Folder,Active,Krishna Nikam,Medium,Security,Not Automated,"Tests that the login form enforces maximum length limits for username
+and password inputs to prevent buffer overflow attacks and ensure system
+stability. This validation protects against excessively long input
+submissions that could compromise system security or performance.
+
+","1.  Browser environment is standardized with a supported browser
+    (Chrome, Firefox, Safari, or Edge) at 1920x1080 resolution with 100%
+    zoom level
+2.  Stable and active internet connection is available with no network
+    disruptions
+3.  The login page is accessible and fully loaded without JavaScript
+    errors
+4.  User is not currently authenticated and is viewing the login page
+    for the first time in this session
+5.  Browser developer tools are available for verifying input field
+    maximum length attributes and form submission behavior
+6.  No browser extensions or plugins are interfering with form input or
+    submission
+
+",Steps,"Navigate to the login page and wait for all elements to fully load
+
+","Login page is displayed with username and password input fields visible
+and ready for interaction
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:35:56,Krishna Nikam,02/22/2026 06:35:56,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548957
+,,,,,,,,,,,,"Inspect the username input field to identify the maximum length
+attribute (e.g., maxlength='50' as an example)
+
+","Maximum length attribute is identified for the username field; note this
+value for validation purposes
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter a string that exceeds the maximum length limit by 20 characters
+(for example, if max is 50 characters, enter 70 characters) in the
+username field
+
+","The username field either rejects input beyond the maximum length limit
+or automatically truncates to the maximum allowed length without
+allowing overflow
+
+",,,,,,,,,
+,,,,,,,,,,,,"Inspect the password input field to identify the maximum length
+attribute
+
+","Maximum length attribute is identified for the password field; note this
+value for validation purposes
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter a string that exceeds the maximum length limit by 20 characters in
+the password field
+
+","The password field either rejects input beyond the maximum length limit
+or automatically truncates to the maximum allowed length without
+allowing overflow
+
+",,,,,,,,,
+,,,,,,,,,,,,"Attempt to submit the login form with username and password both at
+their maximum allowed length
+
+","Form submission is processed normally without errors, demonstrating that
+maximum length limits do not prevent legitimate submissions
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify in browser developer tools or network inspector that the
+submitted payload contains only the truncated/limited values, not the
+excess characters
+
+","Submitted credentials in the request payload contain only characters
+within the maximum length limit, confirming no buffer overflow risk
+
+",,,,,,,,,
+,,,,,,,,,,,,"Test with special characters at maximum length boundaries (for example,
+entering special characters like '@', '#', '$' up to the limit)
+
+","Special characters are handled correctly within the maximum length
+constraints without causing validation errors or system instability
+
+",,,,,,,,,
+TC-2405,Unicode and International Character Support in Login Fields,39691774,New Folder,Active,Krishna Nikam,Medium,Security,Not Automated,"Verifies that the login form correctly handles Unicode characters and
+international character sets in usernames and passwords, ensuring global
+accessibility. This test validates that the system supports diverse
+character encodings without security vulnerabilities.
+
+","1.  Browser environment is standardized with a supported browser
+    (Chrome, Firefox, Safari, or Edge) at 1920x1080 resolution with 100%
+    zoom level
+2.  Browser character encoding is set to UTF-8 to properly support
+    Unicode characters
+3.  System keyboard or input method editor supports Unicode and
+    international character input
+4.  The login page is accessible and fully loaded without JavaScript
+    errors
+5.  User is not currently authenticated and is viewing the login page
+    for the first time in this session
+6.  Test user accounts exist with Unicode or international characters in
+    usernames and/or passwords for validation purposes
+7.  Database and backend systems are configured to support Unicode
+    character storage and comparison
+8.  No browser extensions or plugins are interfering with character
+    input or form encoding
+
+",Steps,"Navigate to the login page and verify that all form elements are
+displayed correctly with proper character encoding
+
+","Login page loads successfully with username and password fields ready to
+accept input, and character encoding is set to UTF-8
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:35:56,Krishna Nikam,02/22/2026 06:35:56,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548958
+,,,,,,,,,,,,"Enter a username containing Unicode characters from various scripts (for
+example: Chinese characters '用户名', Arabic characters 'اسم المستخدم',
+Cyrillic characters 'имя пользователя', or emoji characters) in the
+username field
+
+","Unicode characters are displayed correctly in the username field without
+garbling, encoding errors, or character corruption
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter a password containing Unicode characters from various
+international character sets (for example: Greek characters 'κωδικός',
+Hebrew characters 'סיסמה', or Japanese characters 'パスワード')
+
+","Unicode characters are accepted and displayed correctly in the password
+field (typically shown as dots or asterisks for security) without
+encoding errors
+
+",,,,,,,,,
+,,,,,,,,,,,,"Submit the login form with valid Unicode-based credentials that match a
+test account in the system
+
+","Form submission is processed successfully and authentication is
+attempted with the Unicode credentials
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify in the browser network inspector that the submitted credentials
+preserve the Unicode characters correctly in the request payload
+
+","Submitted credentials in the request contain properly encoded Unicode
+characters matching the input without character corruption or encoding
+issues
+
+",,,,,,,,,
+,,,,,,,,,,,,"Confirm that the server-side validation correctly compares the submitted
+Unicode credentials against stored values
+
+","Authentication succeeds with correct Unicode credentials and fails
+appropriately with incorrect Unicode credentials, demonstrating proper
+character comparison
+
+",,,,,,,,,
+,,,,,,,,,,,,"Test with mixed Unicode and ASCII characters in both username and
+password fields (for example: 'user名前123', 'pass密码@456')
+
+","Mixed character sets are processed correctly without encoding conflicts
+or validation errors
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that special Unicode characters and combining diacritical marks
+are handled correctly (for example: accented characters like 'café',
+'naïve', or combining marks)
+
+","Combining characters and diacritical marks are properly stored and
+compared, allowing successful authentication with these complex Unicode
+sequences
+
+",,,,,,,,,
+,,,,,,,,,,,,"Test Unicode characters at the boundaries of input field length limits
+to ensure no truncation issues occur
+
+","Unicode characters at or near maximum length limits are processed
+correctly without unexpected truncation or character loss
+
+",,,,,,,,,
+TC-2398,Authentication with Special Characters in Valid Credentials,39691774,New Folder,Active,Krishna Nikam,Medium,Security,Not Automated,"Verifies that the authentication system correctly processes usernames
+and passwords containing special characters, numbers, and symbols when
+they are part of valid credentials. This ensures the system supports
+diverse character sets in authentication data.
+
+","1.  User has a valid registered account with username/email containing
+    special characters (e.g., 'user.name+tag@example.com' or
+    'user_name')
+2.  User's password contains special characters, numbers, and symbols
+    (e.g., 'P@ssw0rd!#123')
+3.  Account is in active status and not locked or suspended
+4.  Browser is set to a supported version (Chrome, Firefox, Safari,
+    Edge)
+5.  Browser resolution is set to 1920x1080 with 100% zoom level
+6.  Cookies are enabled in the browser
+7.  Stable and active internet connection is available
+8.  No interfering browser extensions are present
+9.  Login page is accessible and fully loaded
+10. Browser character encoding is set to UTF-8 or supported encoding
+
+",Steps,"Navigate to the login page
+
+","Login page is fully loaded with email/username field, password field,
+and login button visible
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:35:56,Krishna Nikam,02/22/2026 06:35:56,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548951
+,,,,,,,,,,,,"Enter the username/email containing special characters (e.g.,
+'user.name+tag@example.com')
+
+","Username/email with special characters is entered correctly in the input
+field
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter the password containing special characters, numbers, and symbols
+(e.g., 'P@ssw0rd!#123')
+
+","Password with special characters is entered in the password field
+(displayed as masked characters)
+
+",,,,,,,,,
+,,,,,,,,,,,,"Click the 'Login' or 'Submit' button
+
+","Login request is submitted to the server with special characters
+properly encoded
+
+",,,,,,,,,
+,,,,,,,,,,,,"Wait for server to process the authentication with special characters
+
+","Server properly decodes and validates the username/email and password
+containing special characters
+
+",,,,,,,,,
+,,,,,,,,,,,,"Observe authentication result
+
+","Authentication is successful; user with special characters in
+credentials is authenticated
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify user is redirected to authenticated area
+
+","User is successfully logged in and redirected to the authenticated
+dashboard/home page
+
+",,,,,,,,,
+TC-2392,Appropriate HTTP Status Codes for Authentication Failures,39691774,New Folder,Active,Krishna Nikam,Medium,Security,Not Automated,"Tests that authentication failures return appropriate HTTP status codes
+(such as 401 Unauthorized) without providing additional information that
+could aid attackers. This ensures that HTTP responses maintain security
+while following standard protocols.
+
+","1.  System is deployed and accessible via HTTPS protocol
+2.  A valid user account exists in the system with known credentials
+    (username: testuser@example.com, password: TestPassword123)
+3.  A test account or invalid credentials are prepared
+    (invalid_user@example.com, WrongPassword123)
+4.  HTTP client/tool is configured to capture and inspect response
+    headers and status codes (e.g., Postman, curl, browser developer
+    tools)
+5.  Network connectivity is stable and active
+6.  No account lockout is currently active on test accounts
+7.  Application backend is running and authentication service is
+    operational
+8.  TLS/SSL certificate is valid and properly configured
+
+",Steps,"Attempt to authenticate with a valid username/email but incorrect
+password
+
+","System returns HTTP 401 (Unauthorized) status code in response header
+without revealing whether the username/email exists in the system
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:35:56,Krishna Nikam,02/22/2026 06:35:56,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548945
+,,,,,,,,,,,,"Examine the HTTP response body for the authentication failure
+
+","Response body contains a generic error message such as 'Invalid
+credentials' or 'Authentication failed' without disclosing specific
+information about whether the username or password was incorrect
+
+",,,,,,,,,
+,,,,,,,,,,,,"Attempt to authenticate with a non-existent username/email and any
+password
+
+","System returns HTTP 401 (Unauthorized) status code consistent with
+invalid credentials scenario, not revealing that the username/email does
+not exist
+
+",,,,,,,,,
+,,,,,,,,,,,,"Examine the HTTP response body for the non-existent user attempt
+
+","Response body displays the same generic error message as step 2,
+maintaining security by not differentiating between invalid username and
+invalid password
+
+",,,,,,,,,
+,,,,,,,,,,,,"Attempt authentication with empty username/email field and a password
+value
+
+","System returns HTTP 400 (Bad Request) status code indicating invalid
+input format, with error message stating 'Username/email is required' or
+similar validation message
+
+",,,,,,,,,
+,,,,,,,,,,,,"Attempt authentication with username/email and empty password field
+
+","System returns HTTP 400 (Bad Request) status code with error message
+stating 'Password is required' or similar validation message
+
+",,,,,,,,,
+,,,,,,,,,,,,"Attempt authentication with both username/email and password fields
+empty
+
+","System returns HTTP 400 (Bad Request) status code with error message
+indicating required fields are missing
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that all error responses are transmitted over HTTPS with secure
+headers (no plaintext transmission)
+
+","HTTP response headers include security headers such as
+'Strict-Transport-Security', 'Content-Security-Policy', and
+'X-Content-Type-Options' to ensure secure transmission
+
+",,,,,,,,,
+,,,,,,,,,,,,"Inspect server logs and application logs for sensitive information
+leakage
+
+","Logs do not contain plaintext passwords, and authentication failures are
+logged without exposing credential details or internal system
+information that could aid attackers
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify response time consistency between successful and failed
+authentication attempts
+
+","Response times for failed authentication attempts are similar to
+successful attempts (within acceptable variance), preventing
+timing-based attacks that could reveal whether username exists
+
+",,,,,,,,,
+TC-2386,Consistent Response Time for Valid and Invalid Credentials,39691774,New Folder,Active,Krishna Nikam,Medium,Security,Not Automated,"Tests that the system maintains consistent response times for both valid
+and invalid login attempts to prevent timing attacks that could reveal
+information about credential validity. This ensures that response timing
+cannot be used to determine if usernames exist in the system.
+
+","1.  Browser environment standardized: supported browser (Chrome,
+    Firefox, Safari, or Edge) with desktop resolution of 1920x1080, 100%
+    zoom level, stable and active internet connection
+2.  Application login page is accessible and fully loaded
+3.  System clock is synchronized across client and server to enable
+    accurate timing measurement
+4.  Timing measurement tools/network profiler are ready to capture
+    response times (e.g., Chrome DevTools Network tab, or automated
+    timing instrumentation in test framework)
+5.  Database connection is functioning normally without artificial
+    delays
+6.  No interfering browser extensions, JavaScript errors, or network
+    throttling is enabled
+7.  Server is operating under normal load conditions (not under stress
+    or maintenance)
+8.  Valid user account credentials are available for testing valid login
+    attempt
+9.  Known invalid username/email and password combinations are prepared
+    for testing invalid login attempts
+
+",Steps,"Navigate to the application login page and allow it to fully load
+
+","Login page is displayed with username/email input field, password input
+field, and login button visible
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:35:56,Krishna Nikam,02/22/2026 06:35:56,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548939
+,,,,,,,,,,,,"Open browser developer tools (F12 or right-click > Inspect >
+Network tab) to enable network monitoring and timing measurement
+
+","Network tab is open and ready to capture HTTP requests and their
+response times
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter a valid username/email and valid password in the respective login
+fields
+
+","Username/email field contains the valid credential value, password field
+contains the valid password value
+
+",,,,,,,,,
+,,,,,,,,,,,,"Click the login button and immediately note the request initiation time
+from network monitoring
+
+","Login request is sent to the server; network tab shows the outgoing POST
+request with timestamp
+
+",,,,,,,,,
+,,,,,,,,,,,,"Measure and record the complete response time for the valid login
+attempt (from request initiation to response received), including the
+time for server processing and response transmission
+
+","Valid login response time is recorded (example: 450-550ms for processing
+and network transmission combined)
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that the login is successful and user is redirected to the
+authenticated dashboard/home page
+
+","User is successfully authenticated and redirected to the authenticated
+area; session token/cookie is created
+
+",,,,,,,,,
+,,,,,,,,,,,,"Clear the session by logging out or clearing browser cookies/session
+storage to return to unauthenticated state
+
+","Session is cleared; user is returned to login page or unauthenticated
+state; network tab is still open
+
+",,,,,,,,,
+,,,,,,,,,,,,"Enter an invalid username/email (example: 'nonexistentuser@example.com')
+and an invalid password in the login fields
+
+","Username/email field contains the invalid credential value, password
+field contains an invalid password value
+
+",,,,,,,,,
+,,,,,,,,,,,,"Click the login button and immediately note the request initiation time
+from network monitoring
+
+","Login request with invalid credentials is sent to the server; network
+tab shows the outgoing POST request with timestamp
+
+",,,,,,,,,
+,,,,,,,,,,,,"Measure and record the complete response time for the invalid login
+attempt (from request initiation to response received), including the
+time for server processing and response transmission
+
+","Invalid login response time is recorded (example: 450-550ms for
+processing and network transmission combined)
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that the login is rejected and an appropriate error message is
+displayed to the user without revealing whether the username exists or
+if the password is incorrect
+
+","Error message is displayed (example: 'Invalid username or password' or
+similar generic message); user remains on login page; no session is
+created
+
+",,,,,,,,,
+,,,,,,,,,,,,"Compare the recorded response times between valid and invalid login
+attempts to determine the time difference
+
+","Response time difference is calculated; difference should be
+minimal/negligible (example: less than 100ms variance) to prevent
+timing-based attacks
+
+",,,,,,,,,
+,,,,,,,,,,,,"Repeat the test at least 3 times with different valid and invalid
+credential combinations to ensure consistency of response times across
+multiple attempts
+
+","Multiple response time measurements are recorded for both valid and
+invalid attempts; all measurements show consistent timing patterns with
+minimal variance between valid and invalid attempts
+
+",,,,,,,,,
+,,,,,,,,,,,,"Analyze all recorded response times to confirm that no statistically
+significant timing difference exists between valid and invalid login
+attempts that could reveal credential validity
+
+","Response time analysis confirms that valid and invalid login attempts
+have consistent response times within acceptable variance threshold
+(example: 450-550ms for both), preventing timing-based information
+disclosure
+
+",,,,,,,,,
+TC-2377,Verify cart counter increments from zero to one on first Add to Cart click,39691774,New Folder,Active,Krishna Nikam,Critical,Functional,Not Automated,"This test validates that when a user clicks the 'Add to Cart' button for
+the first time on a product, the cart counter badge displays '1'
+immediately without requiring a page reload. This is critical for
+establishing the initial cart state and ensuring users receive immediate
+visual feedback that their action was successful.
+
+","1.  Browser environment is standardized using a supported browser
+    (Chrome, Firefox, Safari, or Edge) at desktop resolution 1920x1080
+    with 100% zoom level.
+2.  Stable and active internet connection is available.
+3.  No JavaScript errors are present in the browser console.
+4.  No interfering browser extensions or developer tools are active.
+5.  The product page or product listing page is fully loaded without any
+    rendering errors.
+6.  The cart is empty (cart counter displays '0' or is not visible).
+7.  Browser storage (localStorage/sessionStorage) is cleared or reset to
+    ensure a clean initial state.
+8.  At least one product with an 'Add to Cart' button is available and
+    visible on the current page.
+
+",Steps,"Load the product page or product listing page in the supported browser.
+
+","The page loads completely without JavaScript errors. The cart counter
+badge is visible in the header/navigation area and displays '0' or no
+count indicator, indicating the cart is empty.
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:31:03,Krishna Nikam,02/22/2026 06:31:03,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548712
+,,,,,,,,,,,,"Locate the 'Add to Cart' button for a product.
+
+","The 'Add to Cart' button is visible and accessible on the product card
+or product detail page. The button is in an enabled state (clickable).
+
+",,,,,,,,,
+,,,,,,,,,,,,"Click the 'Add to Cart' button for the first time.
+
+","The cart counter badge updates immediately and displays '1' without
+requiring a page refresh. The visual update occurs instantly, providing
+immediate feedback to the user.
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify the cart counter value displayed in the UI.
+
+","The cart counter badge clearly shows the numeral '1' in the correct
+position (consistent visual styling, proper alignment, no leading zeros,
+correct font formatting).
+
+",,,,,,,,,
+,,,,,,,,,,,,"Open browser developer tools and check the browser storage (localStorage
+or sessionStorage).
+
+","The cart data is persisted in browser storage with the value of '1' item
+in the cart. The stored cart count matches the displayed counter on the
+UI.
+
+",,,,,,,,,
+TC-2378,Verify cart counter increments from existing count on subsequent Add to Cart click,39691774,New Folder,Active,Krishna Nikam,Critical,Functional,Not Automated,"This test ensures that when a cart already contains items and a user
+clicks 'Add to Cart' on any product, the counter increases by exactly 1
+from the current count. This validates the increment logic works
+correctly regardless of the starting cart state and maintains accurate
+counting throughout the user session.
+
+","1.  Web application is fully loaded with no JavaScript errors
+2.  Browser is a supported type (Chrome, Firefox, Safari, or Edge)
+3.  Desktop resolution is set to 1920x1080 at 100% zoom level
+4.  Stable and active internet connection is available
+5.  No interfering browser extensions or tools are active
+6.  User has navigated to the product catalog/shopping page
+7.  At least one product is available to add to cart
+8.  Cart already contains items (e.g., cart counter currently displays a
+    value greater than 0)
+9.  Browser storage (localStorage or sessionStorage) is accessible and
+    functional
+
+",Steps,"Open the product catalog or shopping page and verify that the cart
+counter badge is visible and displays the current cart count (e.g.,
+counter shows 2 items)
+
+","Cart counter is clearly visible and displays the existing count
+accurately
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:31:03,Krishna Nikam,02/22/2026 06:31:03,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548713
+,,,,,,,,,,,,"Identify and click the 'Add to Cart' button on any available product
+
+","'Add to Cart' button is successfully clicked with no errors or UI
+freezing
+
+",,,,,,,,,
+,,,,,,,,,,,,"Observe the cart counter badge immediately after clicking 'Add to Cart'
+
+","Cart counter increments by exactly 1 from the previous value (e.g., from
+2 to 3 items)
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that the counter displays the new incremented value without any
+delay
+
+","The counter shows the correct incremented value in real-time without
+page reload
+
+",,,,,,,,,
+,,,,,,,,,,,,"Repeat the process by clicking 'Add to Cart' on a different product
+
+","Cart counter increments by 1 again from the current count (e.g., from 3
+to 4 items)
+
+",,,,,,,,,
+,,,,,,,,,,,,"Confirm that the counter value increases consistently by 1 with each
+subsequent add to cart action
+
+","The increment logic works correctly regardless of the starting cart
+state, maintaining accurate counting
+
+",,,,,,,,,
+TC-2379,Verify cart counter updates immediately without page reload after Add to Cart click,39691774,New Folder,Active,Krishna Nikam,High,Functional,Not Automated,"This test confirms that the cart counter badge updates in real-time
+immediately after clicking 'Add to Cart' without requiring any page
+refresh or reload. This is essential for providing instant user feedback
+and maintaining a smooth user experience during shopping activities.
+
+","1.  Web application is fully loaded with no JavaScript errors
+2.  Browser is a supported type (Chrome, Firefox, Safari, or Edge)
+3.  Desktop resolution is set to 1920x1080 at 100% zoom level
+4.  Stable and active internet connection is available
+5.  No interfering browser extensions or tools are active
+6.  User is on the product catalog or shopping page
+7.  Cart counter badge is visible and clearly identifiable on the page
+8.  At least one product with an 'Add to Cart' button is available
+9.  No page navigation or automatic page refresh is occurring
+
+",Steps,"Observe the current cart counter value displayed on the page (e.g.,
+counter shows 0, 1, or any existing value)
+
+","Cart counter badge is visible and the current count is clearly displayed
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:31:03,Krishna Nikam,02/22/2026 06:31:03,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548714
+,,,,,,,,,,,,"Locate the 'Add to Cart' button on a product and click it without
+navigating away or refreshing the page
+
+","'Add to Cart' button responds to click action immediately
+
+",,,,,,,,,
+,,,,,,,,,,,,"Monitor the cart counter badge for visual updates immediately after the
+click, without any page reload or refresh
+
+","Cart counter updates in real-time to the new value (incremented by 1)
+without any page reload or refresh requirement
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that the update occurs instantly with no noticeable lag or delay
+
+","Counter update is instantaneous and provides immediate feedback to the
+user
+
+",,,,,,,,,
+,,,,,,,,,,,,"Confirm that the page remains on the same location and all page content
+persists without reload
+
+","Page state is unchanged, and only the cart counter is updated without
+affecting page navigation or content display
+
+",,,,,,,,,
+,,,,,,,,,,,,"Click 'Add to Cart' again on another product and verify real-time update
+
+","Cart counter updates immediately again in real-time without page reload,
+demonstrating consistent real-time update behavior
+
+",,,,,,,,,
+TC-2380,Verify cart counter displays correct numerical value after single Add to Cart action,39691774,New Folder,Active,Krishna Nikam,High,Functional,Not Automated,"This test validates that the cart counter badge shows the exact correct
+number after a single 'Add to Cart' click, ensuring no mathematical
+errors, display formatting issues, or incorrect value representation
+occur. This is fundamental for maintaining user trust in the cart
+functionality.
+
+","1.  Web application is fully loaded with no JavaScript errors
+2.  Browser is a supported type (Chrome, Firefox, Safari, or Edge)
+3.  Desktop resolution is set to 1920x1080 at 100% zoom level
+4.  Stable and active internet connection is available
+5.  No interfering browser extensions or tools are active
+6.  User is on the product catalog or shopping page
+7.  Cart counter badge is visible and displayed prominently
+8.  At least one product with an 'Add to Cart' button is available
+9.  Cart is initially empty (counter displays 0) or contains items
+    (counter displays the current count)
+
+",Steps,"Note the initial cart counter value before performing any action (e.g.,
+counter shows 0)
+
+","Initial cart count is recorded and clearly visible
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:31:03,Krishna Nikam,02/22/2026 06:31:03,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548715
+,,,,,,,,,,,,"Click the 'Add to Cart' button on a selected product
+
+","'Add to Cart' button is clicked successfully without errors
+
+",,,,,,,,,
+,,,,,,,,,,,,"Observe the cart counter badge immediately after the click
+
+","Cart counter updates to display the new value
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify that the displayed counter value is mathematically correct
+(initial count + 1)
+
+","Counter shows the exact correct numerical value with no mathematical
+errors (e.g., if initial was 0, counter now shows 1)
+
+",,,,,,,,,
+,,,,,,,,,,,,"Confirm that the counter value is properly formatted with no leading
+zeros, incorrect decimal points, or formatting anomalies
+
+","Counter displays the number in standard integer format without any
+formatting issues
+
+",,,,,,,,,
+,,,,,,,,,,,,"Validate that the displayed value matches the actual cart item count
+without discrepancies
+
+","The counter accurately represents the number of items in the cart with
+no mismatches or display inconsistencies
+
+",,,,,,,,,
+TC-2373,Verify cart counter remains consistent when navigating from product page to category page,39691774,New Folder,Active,Krishna Nikam,Critical,Functional,Not Automated,"This test validates that when a user adds items to cart on a product
+page and then navigates to a category page, the cart counter displays
+the same count without resetting or losing data. This is critical for
+maintaining cart state consistency across different page types during a
+single browsing session.
+
+","1.  Browser is set to a supported browser (Chrome, Firefox, Safari, or
+    Edge) at desktop resolution 1920x1080 with 100% zoom
+2.  Stable, active internet connection is available
+3.  No JavaScript errors are present in the browser console
+4.  No interfering browser extensions are active
+5.  User is on a product page with an 'Add to Cart' button visible
+6.  The product page is fully loaded without any loading indicators
+7.  Cart counter badge is visible and currently displays '0' or empty
+    state
+8.  Browser storage (localStorage) is enabled and functional
+
+",Steps,"Click the 'Add to Cart' button on the product page for a product (e.g.,
+'Sample Product 1')
+
+","Cart counter badge increments to '1' in real-time without page reload.
+The counter is visually updated and remains visible at the top of the
+page
+
+","","AI Generated Details,AI Generated","",02/22/2026 06:31:03,Krishna Nikam,02/22/2026 06:31:03,Krishna Nikam,PS-1,https://test-management.browserstack.com/projects/3346784/folder/39691774/test-cases/86548708
+,,,,,,,,,,,,"Navigate to a category page (e.g., 'Men' category) by clicking a
+category link or using the navigation menu
+
+","Page transitions to the category page and fully loads. Cart counter
+badge remains visible and displays '1', matching the count from the
+product page
+
+",,,,,,,,,
+,,,,,,,,,,,,"Verify the cart counter value is displayed correctly on the category
+page
+
+","Cart counter shows '1' consistently. No data loss or reset occurs. The
+counter value matches the previous state from the product page
+
+",,,,,,,,,
+,,,,,,,,,,,,"Add another product to cart from the category page (click 'Add to Cart'
+on any visible product)
+
+","Cart counter increments to '2'. The updated count is displayed
+immediately without page refresh
+
+",,,,,,,,,
+,,,,,,,,,,,,"Navigate back to the product page using browser navigation or menu
+
+","Cart counter remains at '2' on the product page. Cart state is
+maintained across page navigation
+
+",,,,,,,,,
